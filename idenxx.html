@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>miArgentina – Demo</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:#f2f2f2;
+}
+.header{
+  background:#4a3cff;
+  color:white;
+  padding:25px;
+  border-bottom-left-radius:25px;
+  border-bottom-right-radius:25px;
+}
+.card{
+  background:white;
+  margin:15px;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.item{
+  background:white;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  cursor:pointer;
+}
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.modal-content{
+  background:white;
+  width:90%;
+  max-width:380px;
+  border-radius:15px;
+  padding:15px;
+  position:relative;
+}
+.close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:20px;
+  cursor:pointer;
+}
+.doc img{
+  width:100%;
+  border-radius:10px;
+}
+.tabs{
+  display:flex;
+  margin:10px 0;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid #ddd;
+}
+.tab{
+  flex:1;
+  padding:10px;
+  border:none;
+  background:#f2f2f2;
+  font-weight:600;
+}
+.tab.active{
+  background:#4a3cff;
+  color:white;
+}
+.footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  border-top:1px solid #ddd;
+}
+.footer div{
+  font-size:12px;
+  color:#888;
+}
+.footer .active{
+  color:#4a3cff;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h2>miArgentina</h2>
+  <p>¡Hola Elias Juan!</p>
+</div>
+
+<div class="card">
+  <b>¡Todas tus credenciales están al día!</b>
+</div>
+
+<div class="card">
+  <h3>¿Qué necesitás hoy?</h3>
+  <div class="grid">
+    <div class="item">🪪<br><b>DNI</b></div>
+    <div class="item" onclick="openModal('licencia')">🚗<br><b>Licencia</b></div>
+    <div class="item">💼<br><b>Trabajo</b></div>
+    <div class="item">❤️<br><b>Salud</b></div>
+  </div>
+</div>
+
+<!-- MODAL LICENCIA -->
+<div class="modal" id="licencia">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('licencia')">✕</div>
+
+    <h3>Licencia Digital</h3>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showLicencia('frente')">Frente</button>
+      <button class="tab" onclick="showLicencia('dorso')">Dorso</button>
+    </div>
+
+    <div class="doc" id="lic-frente">
+      <img src="IMG_6374.jpeg">
+    </div>
+
+    <div class="doc" id="lic-dorso" style="display:none">
+      <img src="IMG_6376.jpeg">
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="active">Inicio</div>
+  <div>Novedades</div>
+  <div>Teléfonos</div>
+  <div>Tina</div>
+</div>
+
+<script>
+function openModal(id){
+  document.getElementById(id).style.display="flex";
+}
+function closeModal(id){
+  document.getElementById(id).style.display="none";
+}
+function showLicencia(lado){
+  document.getElementById("lic-frente").style.display =
+    lado === "frente" ? "block" : "none";
+  document.getElementById("lic-dorso").style.display =
+    lado === "dorso" ? "block" : "none";
+
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".tab")[lado === "frente" ? 0 : 1]
+    .classList.add("active");
+}
+</script>
+
+</body>
+</html>
