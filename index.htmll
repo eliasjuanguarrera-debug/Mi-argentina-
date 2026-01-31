@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>miArgentina – Demo</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:#f2f2f2;
+}
+.header{
+  background:#4a3cff;
+  color:white;
+  padding:25px;
+  border-bottom-left-radius:25px;
+  border-bottom-right-radius:25px;
+}
+.header h2{margin:0;font-weight:600}
+.card{
+  background:white;
+  margin:15px;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.item{
+  background:white;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  cursor:pointer;
+}
+.item b{font-size:14px}
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.modal-content{
+  background:white;
+  width:90%;
+  max-width:380px;
+  border-radius:15px;
+  padding:10px;
+  position:relative;
+}
+.close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:20px;
+  cursor:pointer;
+}
+.doc{
+  position:relative;
+}
+.doc img{
+  width:100%;
+  border-radius:10px;
+}
+.watermark{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  font-weight:800;
+  color:rgba(255,0,0,.35);
+  transform:rotate(-25deg);
+}
+.footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  border-top:1px solid #ddd;
+}
+.footer div{
+  color:#888;
+  font-size:12px;
+}
+.footer .active{
+  color:#4a3cff;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h2>miArgentina</h2>
+  <p>¡Hola Elias Juan!</p>
+</div>
+
+<div class="card">
+  <b>¡Todas tus credenciales están al día!</b>
+</div>
+
+<div class="card">
+  <h3>¿Qué necesitás hoy?</h3>
+  <div class="grid">
+    <div class="item" onclick="openModal('dni')">
+      🪪<br><b>DNI</b>
+    </div>
+    <div class="item" onclick="openModal('licencia')">
+      🚗<br><b>Licencia</b>
+    </div>
+    <div class="item">💼<br><b>Trabajo</b></div>
+    <div class="item">❤️<br><b>Salud</b></div>
+  </div>
+</div>
+
+<!-- MODAL DNI -->
+<div class="modal" id="dni">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('dni')">✕</div>
+    <h3>DNI Digital (Demo)</h3>
+    <div class="doc">
+      <img src="https://dummyimage.com/350x220/cccccc/000000&text=DNI+DEMO" />
+      <div class="watermark">DEMO</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL LICENCIA -->
+<div class="modal" id="licencia">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('licencia')">✕</div>
+    <h3>Licencia Digital (Demo)</h3>
+    <div class="doc">
+      <img src="https://dummyimage.com/350x220/cccccc/000000&text=LICENCIA+DEMO" />
+      <div class="watermark">DEMO</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="active">Inicio</div>
+  <div>Novedades</div>
+  <div>Teléfonos</div>
+  <div>Tina</div>
+</div>
+
+<script>
+function openModal(id){
+  document.getElementById(id).style.display="flex";
+}
+function closeModal(id){
+  document.getElementById(id).style.display="none";
+}
+</script>
+
+</body>
+</html>
